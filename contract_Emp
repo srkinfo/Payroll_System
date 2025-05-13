@@ -1,0 +1,13 @@
+public class contract_Emp extends Employee{
+        private double contract_amt;
+
+        public contract_Emp (String name,String emp_id,double contract_amt){
+            super(name,emp_id, contract_amt);
+            this.contract_amt = contract_amt;
+        }
+        @Override
+        public double calculate_salary(){
+            return contract_amt;
+        }
+    }
+
