@@ -1,0 +1,14 @@
+class FulltimeEmployee  extends Employee{
+    private double bouns;
+    private double taxdeduction;
+
+    public FulltimeEmployee(String name,String emp_id,double baseSalary,double bouns,double taxdeduction){
+        super(name, emp_id, baseSalary);
+        this.bouns = bouns;
+        this.taxdeduction = taxdeduction;
+    }
+    @Override
+    public double calculate_salary(){
+        return baseSalary+bouns - taxdeduction;
+    }
+}
