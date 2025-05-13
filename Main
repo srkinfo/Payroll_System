@@ -1,0 +1,106 @@
+import java.util.*;
+    public class Main{
+       private final ArrayList <Employee> employees  = new ArrayList<>();
+      private  final Scanner read = new Scanner(System.in);
+        public void addEmployee(){
+            System.out.println("\n Choose Employee Type: ");
+            System.out.println("1. Full Time Employee");
+            System.out.println("2. Part Time Employee");
+            System.out.println("3. contract Employee");
+
+            System.out.println("Enter Choice: ");
+            int choice = read.nextInt();
+            read.nextLine();
+
+            System.out.println("Enter Employee Name: ");
+            String name = read.nextLine();
+
+            System.out.println("Enter Employee id: ");
+            String emp_id = read.next();
+
+            switch(choice){
+                case 1:
+                    System.out.println("Enter base salary: ");
+                    double baseSalary = read.nextDouble();
+                    System.out.println("Enter Bonus: ");
+                    double bouns = read.nextDouble();
+                    System.out.println("Enter Tax deduction");
+                    double taxdeduction = read.nextDouble();
+                    employees.add(new FulltimeEmployee(name,emp_id,baseSalary,bouns,taxdeduction));
+                    break;
+                case 2:
+                    System.out.println("Enter hoursworked: ");
+                    int hoursworked = read.nextInt();
+                    System.out.println("Enter hourslyRate: ");
+                    double hoursrate = read.nextDouble();
+                    employees.add(new Parttime_emp(name,emp_id,hoursworked,hoursrate));
+                    break;
+                case 3:
+                    System.out.println("Enter Contract Amount: ");
+                    double contract_amt = read.nextDouble();
+                    employees.add(new contract_Emp(name,emp_id,contract_amt));
+                    break;
+                default:
+                    System.out.println("Invalid Choice!");
+            }
+            System.out.println("Employee Added Successfully!");
+        }
+
+        public void processPayroll() {
+        if (employees.isEmpty()) {
+            System.out.println("No Employee to process payroll.");
+
+        } else {
+            System.out.println("\nProcessing Payroll...");
+            for (Employee emp : employees) {
+                System.out.println("Salary for " + emp.name + "(ID: " + emp.emp_id + ") ->Rs" + emp.calculate_salary());
+            }
+        }
+    }
+        public void Display() {
+            if (employees.isEmpty()) {
+                System.out.println("No employees found.");
+
+            } else {
+                System.out.println("\nEmployee Details:");
+                for (Employee emp : employees) {
+                    System.out.println(emp.getDetails());
+                }
+            }
+        }
+
+        public void run(){
+            while(true){
+                System.out.println("\n=== Employee Payroll System ===");
+                System.out.println("1. Add Employee");
+                System.out.println("2. Display Employees");
+                System.out.println("3. Process Payroll");
+                System.out.println("4. Exit");
+                System.out.println("Enter Choice: ");
+
+                int choice = read.nextInt();
+                switch (choice){
+                    case 1:
+                        addEmployee();
+                        break;
+                    case 2:
+                        Display();
+                        break;
+                    case 3:
+                        processPayroll();
+                        break;
+                    case 4:
+                        System.out.println("Exiting Payroll System...");
+                        break;
+                    default:
+                        System.out.println("Invalid Choice! Try again.");
+                }
+            }
+        }
+
+    public static void main(String[] args) {
+        Main payrollSystem = new Main();
+        payrollSystem.run();
+
+        }
+    }
