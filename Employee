@@ -1,0 +1,18 @@
+abstract class Employee {
+    protected String name;
+    protected String emp_id;
+    protected double baseSalary;
+
+    public Employee (String name, String emp_id, double baseSalary){
+        this.name = name;
+        this.emp_id = emp_id;
+        this.baseSalary = baseSalary;
+    }
+    public abstract double calculate_salary();
+
+    public String getDetails(){
+        return "ID :" + emp_id +" Name :"+name+" Salary :" +baseSalary;
+    }
+
+}
+
