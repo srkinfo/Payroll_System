@@ -1,0 +1,16 @@
+public class Parttime_emp extends Employee{
+    private int hoursworked;
+    private double hoursrate;
+
+    public Parttime_emp (String name,String emp_id,int hoursworked,double hoursrate){
+        super(name,emp_id,0);
+        this.hoursworked = hoursworked;
+        this.hoursrate = hoursrate;
+    }
+    @Override
+    public double calculate_salary(){
+        return hoursrate*hoursworked;
+    }
+
+}
+
